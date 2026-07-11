@@ -1,0 +1,1 @@
+const songPath = "songs/somebody-told-me/song.json";
