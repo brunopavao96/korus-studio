@@ -17,8 +17,13 @@ function renderSong (song){
     songArtistElement.textContent = song.artist;
     song.tracks.forEach(track => {
         const trackElement = document.createElement('div');
-        trackElement.textContent = track.name;
-        trackContainer.appendChild(trackElement)
+        const trackName = document.createElement('span');
+        const trackSlider = document.createElement('input');
+        trackSlider.type = "range";
+        trackName.textContent = track.name;
+        trackElement.appendChild(trackName);
+        trackElement.appendChild(trackSlider);
+        trackContainer.appendChild(trackElement);
     });
 }
 songLoad()
