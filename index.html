@@ -3,15 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Korus Studio</title>
-    <link rel="icon" href="/favicon.ico">
+    <title>Kórus Studio</title>
+    <link rel="icon" href="/favicon.ico.ico">
+    <style> 
+        main{display: flex;
+             gap: 20px}
+        .container-lyrics{white-space: pre-wrap;}
+            </style>
 </head>
 <body>
-   
-    <h1 id="song-title">Carregando música...</h1>
-    <h2 id="song-artist"></h2>
-    <div id="player-controls"></div>
-    <div id="tracks-container"></div>
+    <main>
+        <div class="container-control">
+            <h1 id="song-title">Carregando música...</h1>
+            <h2 id="song-artist"></h2>
+            <div id="slider-progress"></div>
+            <div id="player-controls"></div>
+            <div id="progress-container"></div>
+            <div id="tracks-container"></div>
+        </div>
+        <div class="container-lyrics"></div>
+    </main>
     <script src="./src/main.js"></script>
 </body>
 </html>
