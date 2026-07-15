@@ -3,7 +3,9 @@ const audioTracks = [];
 
 let atualTrack;
 let progressTrack;
-let durationTrack
+let durationTrack;
+let currentSong;
+
 
 const libraryContainer = document.querySelector("#library-container");
 const songTitleElement = document.querySelector('#song-title');
@@ -22,34 +24,48 @@ async function libraryLoad(){
 
 function renderLibrary(library){
     library.forEach( element => {
-        const musicTitle = document.createElement('h3');
-        const musicArtist = document.createElement('span');
+        containerMusic = document.createElement('div');
+        musicTitle = document.createElement('h3');
+        musicArtist = document.createElement('span');
         musicTitle.textContent = element.title;
         musicArtist.textContent = element.artist;
-        libraryContainer.appendChild(musicTitle);
-        libraryContainer.appendChild(musicArtist);
+        libraryContainer.appendChild(containerMusic);
+        containerMusic.appendChild(musicTitle);
+        containerMusic.appendChild(musicArtist);
+        containerMusic.addEventListener('click', () => {
+            songLoad(element.folder)
+        })
     })
-}
-
-//libraryContainer.addEventListener('click', songLoad(folder))
-function loadSong(){
-
 }
 libraryLoad()
 
+function clearPlayer(){
+    trackContainer.innerHTML = '';
+    playerControls.innerHTML = '';
+    sliderProgress.innerHTML = '';
+    containerLyrics.innerHTML = '';
+    audioTracks.length = 0;
+}
+
+function clearList(){
+    libraryContainer.innerHTML = '';
+}
+
 async function songLoad(folder){
 
+    currentSong = `songs/${folder}`;
+
+    clearList();
+
     const songPath = `songs/${folder}/song.json`
-
     const response = await fetch(songPath);
-
     const song = await response.json();
 
     await renderSong(song);
 };
 
 async function renderLyrics(song){
-    const response = await fetch(`${SONG_FOLDER}/${song.lyrics}`);
+    const response = await fetch(`${currentSong}/${song.lyrics}`);
     const lyrics = await response.text();
     containerLyrics.textContent = lyrics;
 }
@@ -73,7 +89,7 @@ function renderTracks(song){
         const trackName = document.createElement('span');
         const trackSlider = document.createElement('input');
         const trackAudio = document.createElement('audio');
-        trackAudio.src = `${SONG_FOLDER}/tracks/${track.file}`;
+        trackAudio.src = `${currentSong}/tracks/${track.file}`;
         trackAudio.preload = "auto";
         if (audioTracks.length === 0) {
 
