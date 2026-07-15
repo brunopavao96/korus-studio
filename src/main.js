@@ -1,11 +1,11 @@
-const SONG_FOLDER = "songs/somebody-told-me";
-const SONG_PATH = `${SONG_FOLDER}/song.json`;
+let LIBRARY_PATH = "songs/library.json";
 const audioTracks = [];
 
 let atualTrack;
 let progressTrack;
 let durationTrack
 
+const libraryContainer = document.querySelector("#library-container");
 const songTitleElement = document.querySelector('#song-title');
 const songArtistElement = document.querySelector('#song-artist');
 const trackContainer = document.querySelector('#tracks-container');
@@ -14,10 +14,37 @@ const sliderProgress = document.querySelector("#slider-progress");
 const containerLyrics = document.querySelector('.container-lyrics');
 
 
+async function libraryLoad(){
+    const response = await fetch(LIBRARY_PATH);
+    const library = await response.json();
+    renderLibrary(library)
+}
 
-async function songLoad(){
-    const response = await fetch(SONG_PATH);
+function renderLibrary(library){
+    library.forEach( element => {
+        const musicTitle = document.createElement('h3');
+        const musicArtist = document.createElement('span');
+        musicTitle.textContent = element.title;
+        musicArtist.textContent = element.artist;
+        libraryContainer.appendChild(musicTitle);
+        libraryContainer.appendChild(musicArtist);
+    })
+}
+
+//libraryContainer.addEventListener('click', songLoad(folder))
+function loadSong(){
+
+}
+libraryLoad()
+
+async function songLoad(folder){
+
+    const songPath = `songs/${folder}/song.json`
+
+    const response = await fetch(songPath);
+
     const song = await response.json();
+
     await renderSong(song);
 };
 
@@ -147,4 +174,3 @@ function formatTime (seconds){
     return `${minutes}:${secondsLeft}`
     
 }
-songLoad()
