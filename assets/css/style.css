@@ -1,0 +1,25 @@
+main {
+        
+            display: flex;
+            gap: 20px
+        
+        }
+        .container-lyrics {
+
+            white-space: pre-wrap;
+        
+        }
+
+        #library-container {
+
+            display: flex;
+            flex-direction: column;
+            padding: 5px;
+            text-align: center;
+            border: solid 1px;
+        
+        }
+        .hidden {
+
+            display: none;
+        }
