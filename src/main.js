@@ -5,21 +5,35 @@ let atualTrack;
 let progressTrack;
 let durationTrack;
 let currentSong;
+let library = [];
 
 
 const libraryContainer = document.querySelector("#library-container");
-const songTitleElement = document.querySelector('#song-title');
-const songArtistElement = document.querySelector('#song-artist');
-const trackContainer = document.querySelector('#tracks-container');
+const songTitleElement = document.querySelector("#song-title");
+const songArtistElement = document.querySelector("#song-artist");
+const trackContainer = document.querySelector("#tracks-container");
 const playerControls = document.querySelector("#player-controls");
 const sliderProgress = document.querySelector("#slider-progress");
-const containerLyrics = document.querySelector('.container-lyrics');
-
+const containerLyrics = document.querySelector(".container-lyrics");
+const libraryScreen = document.querySelector("#library-screen");
+const playerScreen = document.querySelector("#player-screen");
+const backButton = document.querySelector("#back-button");
 
 async function libraryLoad(){
+    playerScreen.classList.add("hidden");
     const response = await fetch(LIBRARY_PATH);
     const library = await response.json();
     renderLibrary(library)
+}
+
+
+
+function backLibrary(){
+    stopTracks();
+    clearPlayer();
+    playerScreen.classList.add("hidden");
+    libraryScreen.classList.remove("hidden");
+    libraryLoad();
 }
 
 function renderLibrary(library){
@@ -32,12 +46,13 @@ function renderLibrary(library){
         libraryContainer.appendChild(containerMusic);
         containerMusic.appendChild(musicTitle);
         containerMusic.appendChild(musicArtist);
+        
         containerMusic.addEventListener('click', () => {
             songLoad(element.folder)
         })
     })
 }
-libraryLoad()
+
 
 function clearPlayer(){
     trackContainer.innerHTML = '';
@@ -52,6 +67,9 @@ function clearList(){
 }
 
 async function songLoad(folder){
+    
+    playerScreen.classList.remove("hidden");
+    libraryScreen.classList.add("hidden");
 
     currentSong = `songs/${folder}`;
 
@@ -81,9 +99,11 @@ async function renderSong (song){
 function renderHeader(song){
     songTitleElement.textContent = song.title;
     songArtistElement.textContent = song.artist;
+
 }
 
 function renderTracks(song){
+    backButton.addEventListener('click', backLibrary)
     song.tracks.forEach(track => {
         const trackElement = document.createElement('div');
         const trackName = document.createElement('span');
@@ -190,3 +210,5 @@ function formatTime (seconds){
     return `${minutes}:${secondsLeft}`
     
 }
+
+libraryLoad()
