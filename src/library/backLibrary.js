@@ -4,9 +4,8 @@ import { elements } from "../elements.js";
 import { libraryLoad } from "./libraryLoad.js";
 
 export function backLibrary(){
+    
     stopTracks();
     clearPlayer();
-    elements.playerScreen.classList.add("hidden");
-    elements.libraryScreen.classList.remove("hidden");
     libraryLoad();
 }

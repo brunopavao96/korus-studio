@@ -5,9 +5,6 @@ import { renderSong } from "../player/renderSong.js";
 
 export async function songLoad(folder){
     
-    elements.playerScreen.classList.remove("hidden");
-    elements.libraryScreen.classList.add("hidden");
-
     state.currentSong = `songs/${folder}`;
 
     clearList();

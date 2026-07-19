@@ -2,18 +2,27 @@
     "title" : "Somebody Told Me",
     "artist" : "The Killers",
     "cover" : "cover.jpg",
-    "tracks" : [{
-        "name" : "Vocals",
-        "file" : "vocals.m4a"
-    },{
-        "name" : "Drums",
-        "file" : "drums.m4a"
-    },{
-        "name" : "Bass",
-        "file" : "bass.m4a"
-    },{
-        "name" : "Guitar",
-        "file" : "guitar.m4a"
-    }],
+    "tracks" : [
+        {
+            "id": "vocals",
+            "name": "Vocais",
+            "file": "vocals.m4a"
+        },
+        {
+            "id": "bass",
+            "name": "Baixo",
+            "file": "bass.m4a"
+        },
+        {
+            "id": "drums",
+            "name": "Bateria",
+            "file": "drums.m4a"
+        },
+        {
+            "id": "others",
+            "name": "Outros",
+            "file": "others.m4a"
+        }
+    ],
     "lyrics" : "lyrics.txt"
 }

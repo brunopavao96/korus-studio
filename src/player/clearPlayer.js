@@ -6,6 +6,10 @@ export function clearPlayer(){
     elements.playerControls.innerHTML = '';
     elements.sliderProgress.innerHTML = '';
     elements.containerLyrics.innerHTML = '';
+    elements.songArtist.innerHTML = '';
+    elements.songTitle.innerHTML = '';
 
     state.audioTracks.length = 0;
+
+    elements.libraryScreen.classList.remove("hidden");
 }

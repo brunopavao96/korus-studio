@@ -8,5 +8,10 @@ export const elements = {
     containerLyrics: document.querySelector(".container-lyrics"),
     libraryScreen: document.querySelector("#library-screen"),
     playerScreen: document.querySelector("#player-screen"),
-    backButton: document.querySelector("#back-button")
+    backButton: document.querySelector("#back-button"),
+    card: document.querySelector("#container-preview"),
+    coverCard: document.querySelector("#preview-cover"),
+    titleCard: document.querySelector("#preview-title"),
+    artistCard: document.querySelector("preview-artist"),
+    durationCard: document.querySelector("#duration")
 };

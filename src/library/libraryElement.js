@@ -4,7 +4,6 @@
     musicArtist: [],
     musicTitle: '',
     musicArtist: ''
-
 };
 
 

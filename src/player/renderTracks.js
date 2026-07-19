@@ -19,7 +19,8 @@ export function renderTracks(song){
         });
         trackAudio.addEventListener("timeupdate", () => {
             state.atualTrack.textContent = formatTime(trackAudio.currentTime);
-            state.progressTrack.value = (trackAudio.currentTime / trackAudio.duration) * 100;
+            state.progressTrack.value = 
+            (trackAudio.currentTime / trackAudio.duration) * 100;
         });
     }
         state.audioTracks.push(trackAudio);
