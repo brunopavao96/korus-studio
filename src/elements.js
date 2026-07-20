@@ -13,5 +13,11 @@ export const elements = {
     coverCard: document.querySelector("#preview-cover"),
     titleCard: document.querySelector("#preview-title"),
     artistCard: document.querySelector("preview-artist"),
-    durationCard: document.querySelector("#duration")
+    durationCard: document.querySelector("#duration"),
+    tomAcima: document.querySelector("#tom-acima"),
+    tomAbaixo: document.querySelector("#tom-abaixo"),
+    tonalidadeAtual: document.querySelector("#tonalidade-atual"),
+    play: document.querySelector("#play"),
+    pause: document.querySelector("#pause"),
+    stop: document.querySelector("#stop")
 };

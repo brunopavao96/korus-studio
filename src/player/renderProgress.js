@@ -1,5 +1,6 @@
 import { elements } from "../elements.js";
 import { state } from "../state.js";
+import { connectTrack } from "../audio/connectTrack.js";
 
 export function renderProgress(){
     state.atualTrack = document.createElement('span');
@@ -12,8 +13,8 @@ export function renderProgress(){
     state.atualTrack.textContent = "00:00";
     state.durationTrack.textContent = "00:00";
     state.progressTrack.addEventListener('input', () => {
-        state.audioTracks.forEach(audio => {
-            audio.currentTime = (progressTrack.value / 100) * audio.duration
+        state.audioTracks.forEach(track => {
+            track.audio.currentTime = (state.progressTrack.value / 100) * track.audio.duration
         })
     })
     elements.sliderProgress.appendChild(state.atualTrack);

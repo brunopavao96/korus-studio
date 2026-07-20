@@ -5,10 +5,9 @@ import { renderSong } from "../player/renderSong.js";
 
 export async function songLoad(folder){
     
+    elements.libraryScreen.classList.add('hidden')
+    elements.playerScreen.classList.remove('hidden')
     state.currentSong = `songs/${folder}`;
-
-    clearList();
-
     const songPath = `songs/${folder}/song.json`
     const response = await fetch(songPath);
     const song = await response.json();

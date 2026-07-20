@@ -8,5 +8,7 @@ export const state = {
 
     atualTrack: null,
     progressTrack: null,
-    durationTrack: null
+    durationTrack: null,
+
+    pitch: 0
 };

@@ -1,17 +1,11 @@
 import { playTracks, pauseTracks, stopTracks } from "./actions.js";
 import { elements } from "../elements.js";
+import { acima, abaixo } from "../audio/pitchSong.js";
 
 export function renderControls (){
-    const playButton = document.createElement('button');
-    const pauseButton = document.createElement('button');
-    const stopButton = document.createElement('button');
-    playButton.textContent = 'Play';
-    pauseButton.textContent = 'Pause';
-    stopButton.textContent = 'Stop';
-    playButton.addEventListener('click', playTracks);
-    pauseButton.addEventListener('click', pauseTracks);
-    stopButton.addEventListener('click', stopTracks);
-    elements.playerControls.appendChild(playButton);
-    elements.playerControls.appendChild(pauseButton);
-    elements.playerControls.appendChild(stopButton);
-}1
+    elements.play.addEventListener('click', playTracks);
+    elements.pause.addEventListener('click', pauseTracks);
+    elements.stop.addEventListener('click', stopTracks);
+    elements.tomAcima.addEventListener('click', acima);
+    elements.tomAbaixo.addEventListener('click', abaixo);
+}

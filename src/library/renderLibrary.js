@@ -4,9 +4,9 @@ import { songLoad } from "./songLoad.js";
 import { showPreview } from "./showPreview.js"
 
 export function renderLibrary(library){
-        elements.playerScreen.classList.add("hidden");
     library.forEach( element => {
         libraryElement.containerMusic = document.createElement('div');
+        libraryElement.containerMusic.classList.add('music');
         libraryElement.musicTitle = document.createElement('h3');
         libraryElement.musicArtist = document.createElement('span');
         libraryElement.musicTitle.textContent = element.title;

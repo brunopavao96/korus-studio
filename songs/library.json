@@ -5,8 +5,25 @@
         "artist": "The Killers"
     },
     {
-        "folder": "cigarrets-and-alcohol",
-        "artist": "Oasis",
-        "title": "Cigarrets & Alcohol"
+        "folder": "all-these-things-that-ive-done",
+        "title" : "All These Things That I've Done",
+        "artist" : "The Killers"
+    },
+    {
+        "folder": "cigarettes-and-alcohol",
+        "title" : "Cigarettes & Alcohol",
+        "artist" : "Oasis"
+    },
+    {
+        "folder": "dakota",
+        "title" : "Dakota",
+        "artist" : "Stereophonics"
+    },
+    {
+        "folder": "supersonic",
+        "title" : "Supersonic",
+        "artist" : "Oasis"
     }
+
+
 ]

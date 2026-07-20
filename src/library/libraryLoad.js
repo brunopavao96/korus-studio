@@ -6,4 +6,5 @@ export async function libraryLoad(){
     const response = await fetch(state.libraryPath);
     const library = await response.json();
     renderLibrary(library)
+    elements.playerScreen.classList.add('hidden')
 }

@@ -19,9 +19,9 @@
             "file": "drums.m4a"
         },
         {
-            "id": "others",
+            "id": "other",
             "name": "Outros",
-            "file": "others.m4a"
+            "file": "other.m4a"
         }
     ],
     "lyrics" : "lyrics.txt"
