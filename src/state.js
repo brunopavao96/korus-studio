@@ -1,6 +1,5 @@
 export const state = {
     libraryPath: `songs/library.json`,
-
     library: [],
     currentSong: null,
 
