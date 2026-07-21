@@ -10,5 +10,9 @@ export const state = {
     progressTrack: null,
     durationTrack: null,
 
-    pitch: 0
+    tracksInSolo: [],
+    volumesAntesDoSolo: {},
+
+    pitch: 0,
+    nodesStarted: false
 };

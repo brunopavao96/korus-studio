@@ -1,4 +1,5 @@
 * {
+    user-select: none;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -45,16 +46,21 @@ main {
 }
 
 .container-top {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #0f0f11;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 20px;
+    padding: 16px 0;
     border-bottom: 1px solid #202024;
     margin-bottom: 24px;
 }
 
-.container-top h1 {
-    font-size: 1.8rem;
+.container-top a {
+    text-decoration: none;
+    font-size: 2rem;
     font-weight: 700;
     letter-spacing: -0.5px;
     background: linear-gradient(90deg, #9871f5, #e1e1e6);
@@ -152,7 +158,7 @@ main {
     border: 1px solid #202024;
     border-radius: 12px;
     padding: 32px;
-    height: 72vh;
+    height: 100vh;
     overflow-y: auto;
     
     white-space: pre-wrap; 
@@ -163,6 +169,7 @@ main {
     color: #c4c4cc;
     text-align: left;
     transition: all 0.3s ease;
+
 }
 
 .container-lyrics p.active, .lyric-line.active {
@@ -198,12 +205,12 @@ main {
 .control-pitch {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 16px;
     background: #1a1a1e;
     border: 1px solid #29292e;
     padding: 10px 20px;
     border-radius: 30px;
-    width: fit-content;
 }
 
 .control-pitch button {
@@ -232,6 +239,12 @@ main {
     color: #e1e1e6;
     font-size: 1rem;
     text-transform: uppercase;
+}
+
+.track-name.solo-muted {
+    color: #3a3a42 !important; 
+    opacity: 0.4;             
+    text-decoration: none; 
 }
 
 input[type="range"] {
@@ -270,13 +283,63 @@ input[type="range"]:hover::-webkit-slider-thumb {
 }
 
 #slider-progress {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     width: 100%;
-    height: 6px;
-    background-color: #202024;
-    border-radius: 3px;
-    position: relative;
+    background: transparent; 
+    padding: 10px 0;
+}
+
+.time-display {
+    font-size: 0.85rem;
+    color: #a8a8b3;
+    font-variant-numeric: tabular-nums;
+    min-width: 42px;
+}
+
+.main-progress-bar {
+    flex: 1; 
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
     cursor: pointer;
 }
+
+.main-progress-bar::-webkit-slider-runnable-track {
+    background: #202024;
+    height: 6px;
+    border-radius: 3px;
+    transition: background 0.2s;
+}
+
+.main-progress-bar:hover::-webkit-slider-runnable-track {
+    background: #29292e;
+}
+
+.main-progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -5px;
+    background-color: #9871f5; 
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(152, 113, 245, 0.5);
+    transition: transform 0.1s ease, background-color 0.2s;
+}
+
+.main-progress-bar:hover::-webkit-slider-thumb {
+    transform: scale(1.25);
+    background-color: #a884f7;
+}
+
+#progress-container {
+    display: none !important;
+}
+*/
+
+
 
 .progress-fill {
     height: 100%;
@@ -495,4 +558,21 @@ input[type="range"]:hover::-webkit-slider-thumb {
 
 .music:hover::before {
     height: 60%; 
+}
+
+.track-name {
+    font-size: 0.95rem;
+    color: #e1e1e6;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.track-name:hover {
+    color: #9871f5; 
+}
+
+.track-name.muted-active {
+    color: #4d4d57;
+    transform: scale(0.98);
 }

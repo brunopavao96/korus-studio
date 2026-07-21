@@ -13,7 +13,7 @@
     <main>
 
         <div class="container-top">
-            <h1>Kórus Studio</h1>
+            <a href="index.html">Kórus Studio</a>
             <div class="button-add">
                 <button id="adicionar-pasta">Adicionar Pasta</button>
                 <button id="adicionar-musica">Adicionar Música</button>
@@ -34,7 +34,9 @@
         </div>
         
         <div id="player-screen" class="hidden">
-                <div class="container-left">    
+            
+                <div class="container-left"> 
+                    <button id="back-button">Back</button>   
                     <div class="header-player">
                         <h2 id="song-title"></h2>
                         <h3 id="song-artist"></h3>
@@ -49,23 +51,25 @@
                     <div id="slider-progress"></div>
 
                     <div id="player-controls">
-                        <button id="play">
-                            <span class="material-symbols-outlined">play_arrow</span>
-                        </button>
-
+    
                         <button id="pause">
                             <span class="material-symbols-outlined">pause</span>
+                        </button>
+
+                        <button id="play">
+                            <span class="material-symbols-outlined">play_arrow</span>
                         </button>
 
                         <button id="stop">
                             <span class="material-symbols-outlined">stop</span>
                         </button>
+                        
                     </div>
 
                     <div id="progress-container"></div>
                     <div id="tracks-container"></div>
 
-                    <button id="back-button">Back</button>
+                    
                 </div>
                 <div class="container-lyrics"></div>
             </div>
