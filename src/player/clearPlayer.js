@@ -10,6 +10,6 @@ export function clearPlayer(){
 
     state.audioTracks.length = 0;
 
-    elements.playerScreen.classList.add("hidden");
-    elements.libraryScreen.classList.remove("hidden");
+    elements.libraryScreen.classList.remove('hidden');
+    elements.playerScreen.classList.add('hidden');
 }

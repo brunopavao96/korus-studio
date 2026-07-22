@@ -1,47 +1,33 @@
 import { state } from "../state.js";
-import { getAudioContext } from "../audio/audioContext.js"; 
-
-state.nodesStarted = false;
 
 export function playTracks(){
-    const context = getAudioContext();
-
-    if (context && context.state === 'suspended') {
-        context.resume();
+    if(state.audioTracks.length === 0){
+        console.warn("Nenhuma track carregada");
+        return
     }
-
-    if (state.audioTracks.length === 0) {
-        console.warn("Aguardando os instrumentos carregarem na memória...");
-        return; 
-    }
-
-    if (!nodesJaIniciado) {
-        state.audioTracks.forEach(track => {
-            if (track.source && track.source.buffer) {
-                track.source.start(0);
-            }
-        });
-        nodesJaIniciado = true;
-        console.log("🔊 Banda tocando direto da memória RAM com sucesso!");
-    }
+    state.audioTracks.forEach( track => {
+        track.audio.play();
+    });
 }
 
 export function pauseTracks(){
-    const context = getAudioContext();
-    
-    if (context && context.state === 'running') {
-        context.suspend();
-    }
+    state.audioTracks.forEach( track => {
+        track.audio.pause();
+    })
 }
 
 export function stopTracks(){
-    const context = getAudioContext();
-    if (context) {
-        context.suspend();
+    state.audioTracks.forEach( track => {
+        track.audio.pause();
+        track.audio.currentTime = 0;
+    });
+
+    if(state.audioTracks){
+        state.progressTrack.value = 0;
     }
 
-    if (state.progressTrack) state.progressTrack.value = 0;
-    if (state.atualTrack) state.atualTrack.textContent = "00:00";
-    
-    console.log("Música pausada no início.");
+    if(state.currentTrack){
+        state.currentTrack.textContent = "00:00";
+    }
+    console.log('Música Parada')
 }

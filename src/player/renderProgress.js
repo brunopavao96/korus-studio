@@ -1,6 +1,5 @@
 import { elements } from "../elements.js";
 import { state } from "../state.js";
-import { connectTrack } from "../audio/connectTrack.js";
 
 export function renderProgress(){
     elements.sliderProgress.innerHTML = "";

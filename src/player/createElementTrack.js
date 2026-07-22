@@ -1,5 +1,3 @@
-
-
 export function createElementTrack(track){
     const trackElement = document.createElement('div');
     trackElement.className = 'track-row';
@@ -18,9 +16,9 @@ export function createElementTrack(track){
     trackElement.appendChild(trackName);
     trackElement.appendChild(trackSlider);
 
-    return { 
-        trackElement,
-        trackName,
-        trackSlider
+    return {
+        element: trackElement,
+        slider: trackSlider,
+        audio: track.audio
     }
 }

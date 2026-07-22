@@ -5,7 +5,7 @@ export const state = {
 
     audioTracks: [],
 
-    atualTrack: null,
+    currentTrack: null,
     progressTrack: null,
     durationTrack: null,
 

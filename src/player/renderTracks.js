@@ -1,14 +1,21 @@
 import { elements } from "../elements.js";
+import { bindTrackEvents } from "./bindTrackEvents.js";
 import { createElementTrack } from "./createElementTrack.js";
 
-export function renderTracks(song){
+export function renderTracks(tracks){
     
     elements.trackContainer.innerHTML = '';
 
-    for ( const track of song.tracks ){
+    const trackElements = [];
 
-        const trackElement = createElementTrack(track);
+    for (const track of tracks){
 
-        elements.trackContainer.append(trackElement);
+        const trackUI = createElementTrack(track);
+
+        elements.trackContainer.append(trackUI.element);
+
+        trackElements.push(trackUI);
     }
+
+    return trackElements;
 }
