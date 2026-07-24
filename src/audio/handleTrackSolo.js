@@ -18,7 +18,6 @@ export function handleTrackSolo(track) {
         state.tracksInSolo.push(track.id);
     }
 
-
     if (state.tracksInSolo.length === 0) {
 
         state.audioTracks.forEach(item => {

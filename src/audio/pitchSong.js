@@ -32,7 +32,6 @@ export function acima() {
 
 }
 
-
 export function abaixo() {
 
     if (state.pitch <= -0.5) return;
