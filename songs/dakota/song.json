@@ -1,0 +1,34 @@
+{
+    "title" : "Dakota",
+    "artist" : "Stereophonics",
+    "cover" : "cover.jpg",
+    "tracks" : [
+        {
+            "id": "vocals",
+            "name": "Vocais",
+            "file": "vocals.m4a"
+        },
+        {
+            "id": "bass",
+            "name": "Baixo",
+            "file": "bass.m4a"
+        },
+        {
+            "id": "drums",
+            "name": "Bateria",
+            "file": "drums.m4a"
+        },
+        {
+            "id": "other",
+            "name": "Outros",
+            "file": "other.m4a"
+        },
+        {
+            "id": "keys",
+            "name": "Keys",
+            "file": "keys.m4a"
+        }
+
+    ],
+    "lyrics" : "lyrics.txt"
+}

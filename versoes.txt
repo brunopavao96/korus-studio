@@ -1,0 +1,19 @@
+V1
+✅ Player
+✅ Mixer
+✅ Letras
+⬜ Controle de volume
+
+V2
+⬜ Lista automática de músicas
+⬜ Mudança de tom
+⬜ Equalizador
+
+V3
+⬜ Streaming
+⬜ Cache
+⬜ Login
+
+V4
+⬜ Tablatura sincronizada
+⬜ IA para geração de tablaturas
