@@ -4,7 +4,6 @@ import { clearPlayer } from "./clearPlayer.js";
 import { renderHeader } from "./renderHeader.js";
 import { renderTracks } from "./renderTracks.js";
 import { saveTracks } from "./saveTracks.js";
-import { updateDuration } from "./updateDuration.js";
 
 export async function prepareTracks(song, folder){
 
@@ -18,5 +17,4 @@ export async function prepareTracks(song, folder){
 
     saveTracks(tracks);
 
-    updateDuration(tracks);
 }

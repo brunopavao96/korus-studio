@@ -10,7 +10,6 @@ export const state = {
     durationTrack: null,
 
     tracksInSolo: [],
-    volumesAntesDoSolo: {},
 
     pitch: 0,
     nodesStarted: false
