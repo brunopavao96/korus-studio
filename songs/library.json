@@ -23,7 +23,30 @@
         "folder": "supersonic",
         "title" : "Supersonic",
         "artist" : "Oasis"
+    },
+    {
+        "folder": "mr-brightside",
+        "title" : "Mr. Brightside",
+        "artist" : "The Killers"
+    },
+    {
+        "folder": "dont-look-back-in-anger",
+        "title" : "Don't Look Back in Anger",
+        "artist" : "Oasis"
+    },
+    {
+        "folder": "when-you-were-young",
+        "title" : "When You Were Young",
+        "artist" : "The Killers"
+    },
+    {
+        "folder": "slide-away",
+        "title" : "Slide Away",
+        "artist" : "Oasis"
+    },
+    {
+        "folder": "live-forever",
+        "title" : "Live Forever",
+        "artist" : "Oasis"
     }
-
-
 ]

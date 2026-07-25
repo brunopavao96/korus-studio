@@ -1,6 +1,6 @@
 {
-    "title" : "Dakota",
-    "artist" : "Stereophonics",
+    "title" : "Live Forever",
+    "artist" : "Oasis",
     "cover" : "cover.jpg",
     "tracks" : [
         {
@@ -23,7 +23,6 @@
             "name": "Outros",
             "file": "other.m4a"
         }
-
     ],
     "lyrics" : "lyrics.txt"
 }
