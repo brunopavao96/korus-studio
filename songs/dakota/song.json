@@ -2,6 +2,7 @@
     "title" : "Dakota",
     "artist" : "Stereophonics",
     "cover" : "cover.jpg",
+    "duration" : "4:58",
     "tracks" : [
         {
             "id": "vocals",

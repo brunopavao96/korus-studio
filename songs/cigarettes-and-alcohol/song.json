@@ -1,7 +1,8 @@
 {
     "title" : "Cigarettes & Alcohol",
     "artist" : "Oasis",
-    "cover" : "cover.jpg",
+    "cover" : "cover.gif",
+    "duration" : "4:28",
     "tracks" : [
         {
             "id": "vocals",

@@ -9,7 +9,6 @@ export const elements = {
     libraryScreen: document.querySelector("#library-screen"),
     playerScreen: document.querySelector("#player-screen"),
     backButton: document.querySelector("#back-button"),
-    card: document.querySelector("#container-preview"),
     coverCard: document.querySelector("#preview-cover"),
     titleCard: document.querySelector("#preview-title"),
     artistCard: document.querySelector("#preview-artist"),

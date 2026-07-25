@@ -2,6 +2,7 @@
     "title" : "When You Were Young",
     "artist" : "The Killers",
     "cover" : "cover.jpg",
+    "duration" : "3:40",
     "tracks" : [
         {
             "id": "vocals",

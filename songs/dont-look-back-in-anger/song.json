@@ -2,6 +2,7 @@
     "title" : "Don't Look Back in Anger",
     "artist" : "Oasis",
     "cover" : "cover.jpg",
+    "duration" : "4:48",
     "tracks" : [
         {
             "id": "vocals",

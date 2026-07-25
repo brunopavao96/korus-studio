@@ -2,6 +2,7 @@
     "title" : "Live Forever",
     "artist" : "Oasis",
     "cover" : "cover.jpg",
+    "duration" : "4:36",
     "tracks" : [
         {
             "id": "vocals",
