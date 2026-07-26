@@ -626,6 +626,15 @@ input[type="range"]:hover::-webkit-slider-thumb {
 
 }
 
+.lyric:hover {
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.lyric:hover {
+    transform: scale(1.02);
+}
+
 .lyric.active{
 
     opacity:1;

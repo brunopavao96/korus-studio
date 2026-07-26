@@ -31,12 +31,11 @@ export async function renderLyrics(song) {
 
     state.lyrics.forEach((line, index) => {
 
-        const lyric = createLyricElement(line, index);
+    const lyric = createLyricElement(line, index);
 
-        elements.containerLyrics.appendChild(lyric);
+    elements.containerLyrics.appendChild(lyric);
 
     });
 
     state.lyricElements = Array.from(elements.containerLyrics.children);
-
 }

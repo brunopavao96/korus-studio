@@ -1,3 +1,5 @@
+import { seekTo } from "../player/seekTo.js";
+
 export function createLyricElement(line, index) {
 
     const p = document.createElement("p");
@@ -7,6 +9,13 @@ export function createLyricElement(line, index) {
     p.dataset.time = line.time;
     p.textContent = line.text;
 
-    return p;
 
+    p.addEventListener("click", () => {
+
+        seekTo(Number(line.time));
+
+    });
+
+
+    return p;
 }

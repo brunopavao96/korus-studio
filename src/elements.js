@@ -18,5 +18,7 @@ export const elements = {
     tonalidadeAtual: document.querySelector("#tonalidade-atual"),
     play: document.querySelector("#play"),
     pause: document.querySelector("#pause"),
-    stop: document.querySelector("#stop")
+    stop: document.querySelector("#stop"),
+    backward: document.querySelector("#backward"),
+    forward: document.querySelector("#forward")
 };

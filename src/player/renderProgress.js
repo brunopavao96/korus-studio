@@ -27,6 +27,30 @@ export function renderProgress(){
         });
     });
 
+     document.addEventListener("keydown", (event) => {
+
+        if (!state.audioTracks.length) return;
+
+
+        if (event.code === "ArrowLeft") {
+
+            state.audioTracks.forEach(track => {
+                track.audio.currentTime -= 5;
+        });
+
+    }
+
+
+    if (event.code === "ArrowRight") {
+
+        state.audioTracks.forEach(track => {
+            track.audio.currentTime += 5;
+        });
+
+    }
+
+});
+    
     elements.sliderProgress.appendChild(state.currentTrack);
     elements.sliderProgress.appendChild(state.progressTrack);
     elements.sliderProgress.appendChild(state.durationTrack);
