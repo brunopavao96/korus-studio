@@ -1,5 +1,6 @@
 import { state } from "../state.js";
 import { formatTime } from "../utils.js";
+import { updateLyrics } from "../lyrics/updateLyrics.js";
 
 let animationFrame = null;
 
@@ -19,6 +20,10 @@ export function updateProgress() {
         state.progressTrack.value = percent;
         state.currentTrack.textContent = formatTime(audio.currentTime);
         state.durationTrack.textContent = formatTime(audio.duration);
+
+
+        updateLyrics(audio.currentTime);
+
 
         if (!audio.paused) {
             animationFrame = requestAnimationFrame(update);

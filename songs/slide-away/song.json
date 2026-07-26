@@ -2,6 +2,7 @@
     "title" : "Slide Away",
     "artist" : "Oasis",
     "cover" : "cover.jpg",
+    "duration" : "6:32",
     "tracks" : [
         {
             "id": "vocals",
@@ -24,5 +25,5 @@
             "file": "other.m4a"
         }
     ],
-    "lyrics" : "lyrics.txt"
+    "lyrics" : "lyrics.lrc"
 }

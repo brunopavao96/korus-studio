@@ -2,6 +2,7 @@
     "title" : "Mr. Brightside",
     "artist" : "The Killers",
     "cover" : "cover.jpg",
+    "duration" : "3:42",
     "tracks" : [
         {
             "id": "vocals",
@@ -25,5 +26,5 @@
         }
 
     ],
-    "lyrics" : "lyrics.txt"
+    "lyrics" : "lyrics.lrc"
 }

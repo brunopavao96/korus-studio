@@ -165,19 +165,29 @@ main {
     background-color: #121214;
     border: 1px solid #202024;
     border-radius: 12px;
-    padding: 20px;
+
     height: calc(100vh - 160px);
+
     overflow-y: auto;
-    
-    white-space: pre-wrap; 
-    word-wrap: break-word;
-    
-    font-size: 1.25rem;
+    scroll-behavior: smooth;
+
+    padding: 35% 20px;
+
+    font-size: 1.8rem;
     line-height: 2;
     color: #c4c4cc;
     text-align: left;
-    transition: all 0.3s ease;
 
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.lyric {
+    opacity: .35;
+    transform: translateY(10px);
+    transition:
+        opacity .4s ease,
+        transform .4s ease;
 }
 
 .container-lyrics p.active, .lyric-line.active {
@@ -607,4 +617,42 @@ input[type="range"]:hover::-webkit-slider-thumb {
     border-color: #ff4d4d;
     color: #0f0f11;
     box-shadow: 0 0 15px rgba(255, 77, 77, 0.6);
+}
+
+.lyric{
+
+    opacity:.4;
+    transition:.25s;
+
+}
+
+.lyric.active{
+
+    opacity:1;
+    font-weight:bold;
+    color:white;
+
+}
+
+.lyric {
+    opacity: .35;
+    transform: translateY(10px);
+    transition: 
+        opacity .4s ease,
+        transform .4s ease;
+}
+
+.lyric.incoming {
+    opacity: .7;
+    transform: translateY(0);
+}
+
+.lyric.active {
+    opacity: 1;
+    transform: translateY(0);
+    font-weight: bold;
+}
+
+.lyric.past {
+    opacity: .2;
 }

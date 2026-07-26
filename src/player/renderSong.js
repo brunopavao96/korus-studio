@@ -2,7 +2,7 @@ import { renderHeader } from "./renderHeader.js";
 import { controlsAction } from "./controlsAction.js";
 import { renderProgress } from "./renderProgress.js";
 import { prepareTracks } from "./prepareTracks.js";
-import { renderLyrics } from "./renderLyrics.js"
+import { renderLyrics } from "../lyrics/renderLyrics.js";
 
 export async function renderSong (song, folder){    //Criamos uma função assíncrona com o parametro do objeto song.json
     renderHeader(song);                     //Criamos uma função pro header com as informções do song.json

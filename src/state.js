@@ -8,5 +8,10 @@ export const state = {
     durationTrack: null,
     tracksInSolo: [],
     pitch: 0,
-    nodesStarted: false
+    nodesStarted: false,
+    
+    lyrics: [],
+    lyricElements: [],
+    activeLyric: -1,
+    lyricsPreviewTime: 1.5
 };

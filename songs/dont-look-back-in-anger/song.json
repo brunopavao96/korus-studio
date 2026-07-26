@@ -2,7 +2,7 @@
     "title" : "Don't Look Back in Anger",
     "artist" : "Oasis",
     "cover" : "cover.jpg",
-    "duration" : "4:48",
+    "duration" : "4:49",
     "tracks" : [
         {
             "id": "vocals",
@@ -25,5 +25,5 @@
             "file": "other.m4a"
         }
     ],
-    "lyrics" : "lyrics.txt"
+    "lyrics" : "lyrics.lrc"
 }
