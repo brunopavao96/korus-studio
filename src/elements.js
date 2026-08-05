@@ -20,5 +20,6 @@ export const elements = {
     pause: document.querySelector("#pause"),
     stop: document.querySelector("#stop"),
     backward: document.querySelector("#backward"),
-    forward: document.querySelector("#forward")
+    forward: document.querySelector("#forward"),
+    criarPlaylistButton: document.querySelector("#criar-playlist"),
 };

@@ -13,5 +13,7 @@ export const state = {
     lyrics: [],
     lyricElements: [],
     activeLyric: -1,
-    lyricsPreviewTime: 1.5
+    lyricsPreviewTime: 1.5,
+
+    playlists: [],
 };
