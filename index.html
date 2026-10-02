@@ -1,94 +1,483 @@
 <!DOCTYPE html>
+
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kórus Studio</title>
-    <link rel="icon" href="/favicon.ico.ico">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kórus Studio</title>
+
+<link rel="icon" href="/favicon.ico.ico">
+<link rel="stylesheet" href="./assets/css/style.css">
+
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
 
 </head>
+
 <body>
-    <main>
 
-        <div class="container-top">
-            <a href="index.html">KÓRUS STUDIO</a>
-            <div class="button-add">
-                <button id="criar-playlist">Criar Playlist</button>
-                <button id="adicionar-musica">Adicionar Música</button>
-            </div>
-            
+<div id="splash-screen">
+    <audio id="startup-sound" src="./assets/intro.mp3"></audio>
+    <div class="splash-content">
+
+        <div class="splash-logo">
+            KÓRUS
         </div>
 
-        <div id="library-screen">
-            <div id="library-container"></div>
-        
-
-            <div class="container-preview">
-                <img id="preview-cover" src="./assets/logo.png">
-                <h2 id="preview-title"></h2>
-                <h3 id="preview-artist">Escolha sua música</h3>
-                <span id="preview-duration"></span>
-            </div>
+        <div class="splash-subtitle">
+            STUDIO
         </div>
-        
-        <div id="player-screen" class="hidden" >
-            
-                <div class="container-left"> 
-                <div class="header-player2">
-                    <div class="header-player">
-                        <h2 id="song-title"></h2>
-                        <h3 id="song-artist"></h3>
-                        
+
+        <div class="loader">
+            <div class="loader-bar"></div>
+        </div>
+
+    </div>
+</div>
+
+<div id="auth-screen">
+
+    <div id="login-container">
+
+        <h1>KÓRUS STUDIO</h1>
+
+        <h2>Login</h2>
+
+        <form id="login-form">
+
+            <input
+                id="login-email"
+                type="email"
+                placeholder="E-mail"
+                required
+            >
+
+            <input
+                id="login-password"
+                type="password"
+                placeholder="Senha"
+                required
+            >
+
+            <button type="submit">
+                Entrar
+            </button>
+
+        </form>
+
+        <p id="login-message"></p>
+
+        <button id="show-register" type="button">
+            Criar uma conta
+        </button>
+
+    </div>
+
+
+    <div id="register-container" class="hidden">
+
+        <h1>KÓRUS STUDIO</h1>
+
+        <h2>Criar conta</h2>
+
+        <form id="register-form">
+
+            <input
+                id="register-name"
+                type="text"
+                placeholder="Nome"
+                required
+            >
+
+            <input
+                id="register-email"
+                type="email"
+                placeholder="E-mail"
+                required
+            >
+
+            <input
+                id="register-password"
+                type="password"
+                placeholder="Senha"
+                required
+            >
+
+            <input
+                id="register-password-confirm"
+                type="password"
+                placeholder="Confirmar senha"
+                required
+            >
+
+            <button type="submit">
+                Criar conta
+            </button>
+
+        </form>
+
+        <p id="register-message"></p>
+
+        <button id="show-login" type="button">
+            Já tenho uma conta
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<main id="app" class="hidden">
+
+    <div class="container-top">
+
+        <a href="index.html">KÓRUS STUDIO</a>
+
+        <div class="button-add">
+
+    <button id="playlists">
+        Playlists
+    </button>
+
+    <button id="adicionar-musica">
+        Adicionar Música
+    </button>
+
+    <button id="logout-button">
+        Sair
+    </button>
+
+</div>
+
+    </div>
+
+
+    <div id="library-screen">
+
+        <div id="library-container"></div>
+
+        <div class="container-preview">
+
+            <img
+                id="preview-cover"
+                src="./assets/logo.png"
+            >
+
+            <h2 id="preview-title"></h2>
+
+            <h3 id="preview-artist">
+                Escolha sua música
+            </h3>
+
+            <span id="preview-duration"></span>
+
+        </div>
+
+    </div>
+
+    <div id="add-music-screen" class="hidden">
+
+    <div class="add-music-header">
+
+        <div>
+            <h2>Adicionar Música</h2>
+            <p>Configure sua música para usar no Kórus Studio.</p>
+        </div>
+
+        <button id="cancel-add-music">
+            Voltar
+        </button>
+
+    </div>
+
+    <div class="add-music-content">
+
+
+        <div class="music-cover-section">
+
+            <div class="music-cover-preview">
+                <span class="material-symbols-outlined">
+                    music_note
+                </span>
             </div>
-                    <button id="back-button">Back</button>
-                    </div>
-                    <div class="control-pitch">
-                        <h3>Pitch</h3>
-                        <button id="tom-abaixo">-</button>
-                        <span id="tonalidade-atual">0.0</span>
-                        <button id="tom-acima">+</button>
-                    </div>
-                
-                    <div id="slider-progress"></div>
 
-                    <div id="player-controls">
-                        <button id="backward">
-                            <span class="material-symbols-outlined">replay_5</span>
-                        </button>
-    
-                        <button id="pause">
-                            <span class="material-symbols-outlined">pause</span>
-                        </button>
+            <button id="select-cover">
+                Selecionar Capa
+            </button>
 
-                        <button id="play">
-                            <span class="material-symbols-outlined">play_arrow</span>
-                        </button>
+        </div>
 
-                        <button id="stop">
-                            <span class="material-symbols-outlined">stop</span>
-                        </button>
 
-                        <button id="forward">
-                            <span class="material-symbols-outlined">forward_5</span>
-                        </button>
-                        
-                    </div>
+        <div class="music-info-section">
 
-                    <div id="progress-container"></div>
-                    <div id="tracks-container"></div>
+            <div class="form-group">
 
-                    
-                </div>
-                <div class="container-lyrics" aria-label="Lyrics">
-                    <div class="lyrics-container"></div>
-                </div>
+                <label for="music-title">
+                    Nome da música
+                </label>
+
+                <input
+                    id="music-title"
+                    type="text"
+                    placeholder="Ex: Wonderwall"
+                >
+
             </div>
-            
-        
 
-    </main>
-    <script type="module" src="./src/main.js"></script>
+
+            <div class="form-group">
+
+                <label for="music-artist">
+                    Artista
+                </label>
+
+                <input
+                    id="music-artist"
+                    type="text"
+                    placeholder="Ex: Oasis"
+                >
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+    <label for="select-lyrics">
+        Letra sincronizada
+    </label>
+
+    <div class="lyrics-file-selection">
+
+        <span id="lyrics-file-name">
+            Nenhum arquivo selecionado
+        </span>
+
+        <button id="select-lyrics" type="button">
+            Selecionar .lrc
+        </button>
+
+    </div>
+
+</div>
+
+
+        <div class="tracks-config-section">
+
+            <h3>Trilhas</h3>
+
+            <p>
+                Adicione as trilhas de cada instrumento.
+            </p>
+
+            <div class="track-config-item">
+    <div>
+        <strong>Vocal</strong>
+        <span>Nenhum arquivo selecionado</span>
+    </div>
+
+    <button data-track="vocal">
+        Selecionar
+    </button>
+</div>
+
+<div class="track-config-item">
+    <div>
+        <strong>Bateria</strong>
+        <span>Nenhum arquivo selecionado</span>
+    </div>
+
+    <button data-track="bateria">
+        Selecionar
+    </button>
+</div>
+
+<div class="track-config-item">
+    <div>
+        <strong>Baixo</strong>
+        <span>Nenhum arquivo selecionado</span>
+    </div>
+
+    <button data-track="baixo">
+        Selecionar
+    </button>
+</div>
+
+<div class="track-config-item">
+    <div>
+        <strong>Outros</strong>
+        <span>Nenhum arquivo selecionado</span>
+    </div>
+
+    <button data-track="outros">
+        Selecionar
+    </button>
+</div>
+
+            <div class="add-music-actions">
+
+                <button id="cancel-add-music-bottom">
+                    Cancelar
+                </button>
+
+                <button id="save-music">
+                    Salvar Música
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+    <div id="player-screen" class="hidden">
+
+        <div class="container-left">
+
+            <div class="header-player2">
+
+                <div class="header-player">
+
+                    <h2 id="song-title"></h2>
+
+                    <h3 id="song-artist"></h3>
+
+                </div>
+
+                <button id="back-button">
+                    Back
+                </button>
+
+            </div>
+
+
+            <div class="control-pitch">
+
+                <h3>Pitch</h3>
+
+                <button id="tom-abaixo">
+                    -
+                </button>
+
+                <span id="tonalidade-atual">
+                    0.0
+                </span>
+
+                <button id="tom-acima">
+                    +
+                </button>
+
+            </div>
+
+
+            <div id="slider-progress"></div>
+
+
+            <div id="player-controls">
+
+                <button id="backward">
+                    <span class="material-symbols-outlined">
+                        replay_5
+                    </span>
+                </button>
+
+                <button id="pause">
+                    <span class="material-symbols-outlined">
+                        pause
+                    </span>
+                </button>
+
+                <button id="play">
+                    <span class="material-symbols-outlined">
+                        play_arrow
+                    </span>
+                </button>
+
+                <button id="stop">
+                    <span class="material-symbols-outlined">
+                        stop
+                    </span>
+                </button>
+
+                <button id="forward">
+                    <span class="material-symbols-outlined">
+                        forward_5
+                    </span>
+                </button>
+
+            </div>
+
+
+            <div id="progress-container"></div>
+
+            <div id="tracks-container"></div>
+
+        </div>
+
+
+        <div
+            class="container-lyrics"
+            aria-label="Lyrics"
+        >
+
+            <div class="lyrics-container"></div>
+
+        </div>
+
+    </div>
+
+
+    <div id="playlist-screen" class="hidden">
+
+        <button id="create-playlist">
+            Criar Playlist
+        </button>
+
+        <div id="playlist-area"></div>
+
+    </div>
+    <div id="delete-modal" class="delete-modal hidden">
+
+    <div class="delete-modal-content">
+
+        <h2>Excluir música</h2>
+
+        <p id="delete-modal-message">
+            Deseja realmente excluir esta música?
+        </p>
+
+        <div class="delete-modal-actions">
+
+            <button
+                id="cancel-delete"
+                type="button"
+            >
+                Cancelar
+            </button>
+
+            <button
+                id="confirm-delete"
+                type="button"
+            >
+                Excluir
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</main>
+
+
+<script type="module" src="./src/auth.js"></script>
+<script type="module" src="./src/main.js"></script>
+
 </body>
+
 </html>

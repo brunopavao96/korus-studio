@@ -1,12 +1,19 @@
 import { elements } from "../elements.js";
-import { resetPreview } from "./resetPreview.js";
+import { clearPreview } from "./previewPlayer.js";
 
-export function stopPreview(){
+export function stopPreview() {
 
-    elements.coverCard.src = '';
-    elements.titleCard.textContent = '';
-    elements.artistCard.textContent = '';
-    elements.durationCard.textContent = '';
+    clearPreview();
 
-    resetPreview();
+    elements.coverCard.src =
+        "../assets/logo.png";
+
+    elements.titleCard.textContent =
+        "";
+
+    elements.artistCard.textContent =
+        "Escolha sua música";
+
+    elements.durationCard.textContent =
+        "";
 }

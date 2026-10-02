@@ -1,20 +1,79 @@
-import { connectTracks } from "../audio/connectTracks.js"
+import { connectTracks } from "../audio/connectTracks.js";
+
 import { bindTrackEvents } from "./bindTrackEvents.js";
-import { clearPlayer } from "./clearPlayer.js";
-import { renderHeader } from "./renderHeader.js";
+
 import { renderTracks } from "./renderTracks.js";
+
 import { saveTracks } from "./saveTracks.js";
 
-export async function prepareTracks(song, folder){
+import { getUserTracks } from "../library/musicStorage.js";
 
-    const tracks = await connectTracks(song, folder);
-    
-    const trackElements = renderTracks(tracks);
+export async function prepareTracks(song, folder) {
 
-    bindTrackEvents(trackElements);
+    let tracks;
 
-    renderHeader(song);
+    if (folder) {
+
+        tracks = await connectTracks(
+            song,
+            folder
+        );
+
+    }
+    else {
+
+        const user =
+            JSON.parse(
+                sessionStorage.getItem("korusUser")
+            );
+
+        if (!user) {
+            throw new Error(
+                "Nenhum usuário está logado."
+            );
+        }
+
+        const userTracks =
+            await getUserTracks(
+                user.id,
+                song.id
+            );
+
+        tracks = Object.entries(
+            userTracks
+        ).map(([type, file]) => {
+
+            const audio =
+                new Audio(
+                    URL.createObjectURL(file)
+                );
+
+            audio.preload = "auto";
+
+            return {
+
+                id: type,
+
+                name: type,
+
+                audio,
+
+                volumeAntesMute: null,
+
+                volumeAntesSolo: null
+
+            };
+
+        });
+
+    }
+
+    const trackElements =
+        renderTracks(tracks);
+
+    bindTrackEvents(
+        trackElements
+    );
 
     saveTracks(tracks);
-
 }

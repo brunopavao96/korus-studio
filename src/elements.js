@@ -21,5 +21,8 @@ export const elements = {
     stop: document.querySelector("#stop"),
     backward: document.querySelector("#backward"),
     forward: document.querySelector("#forward"),
-    criarPlaylistButton: document.querySelector("#criar-playlist"),
+    createPlaylist: document.querySelector("#create-playlist"),
+    playlistScreen: document.querySelector("#playlist-screen"),
+    buttonPlaylists: document.querySelector("#playlists"),
+    areaplaylist: document.querySelector("#playlist-area")
 };

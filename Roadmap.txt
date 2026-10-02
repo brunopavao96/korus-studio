@@ -1,0 +1,688 @@
+KORUS STUDIO — ROADMAP DE DESENVOLVIMENTO
+
+FASE 1 — Base do aplicativo
+
+Primeiro vamos criar a aplicação e uma interface mínima.
+
+Funções
+Tela principal
+Menu lateral
+Biblioteca
+Player
+Área de letras
+Configurações
+Navegação entre telas
+Tema claro/escuro
+Tecnologia
+
+TypeScript + React
+
+FASE 2 — Biblioteca de músicas
+
+Agora o usuário precisa conseguir colocar músicas dentro do Korus.
+
+Funções
+Importar música do computador
+Listar músicas
+Exibir nome
+Artista
+Álbum
+Capa
+Duração
+Pesquisa
+Ordenação
+Excluir música
+Favoritar
+Tecnologia
+
+TypeScript + React + APIs do navegador
+
+Para armazenamento local, inicialmente vamos experimentar:
+
+File API
+IndexedDB
+Blob
+URL/Object URL
+
+Aqui vamos aprender essas tecnologias porque precisamos delas, não antes.
+
+FASE 3 — Player
+
+Agora fazemos a música realmente tocar.
+
+Funções
+Play
+Pause
+Stop
+Próxima
+Anterior
+Barra de progresso
+Seek
+Volume
+Mute
+Duração
+Tempo atual
+Repetição
+Shuffle
+Tecnologia
+
+Primeiro:
+
+HTML Audio + JavaScript
+
+Depois:
+
+Web Audio API
+
+Aqui começa nosso contato sério com áudio.
+
+FASE 4 — Sistema de músicas do Korus
+
+Agora vamos deixar a música organizada como uma entidade do sistema.
+
+Uma música poderá ter:
+
+Música
+├── Informações
+├── Capa
+├── Áudio principal
+├── Letra
+├── Configurações
+└── Stems
+Funções
+informações da música
+editar informações
+configurações individuais
+volume padrão
+tom padrão
+BPM
+configuração de stems
+
+Isso prepara o terreno para as funções mais interessantes.
+
+FASE 5 — Letras LRC
+
+Agora vamos colocar o sistema de letras.
+
+Funções
+importar .lrc
+ler timestamps
+sincronizar letra
+destacar linha atual
+rolagem automática
+ajuste de sincronização
+tamanho da fonte
+modo palco
+
+Exemplo:
+
+[00:12.50] Primeira linha
+[00:17.30] Segunda linha
+[00:22.10] Terceira linha
+
+Tudo inicialmente em:
+
+JavaScript/TypeScript + React.
+
+FASE 6 — Playlists
+
+Agora o usuário começa a montar repertório.
+
+Funções
+criar playlist
+renomear
+excluir
+adicionar músicas
+remover músicas
+ordenar músicas
+fila de reprodução
+salvar fila
+playlist favorita
+
+E aqui entra uma função muito importante:
+
+Configuração por música
+
+Exemplo:
+
+Playlist: Rock
+
+Supersonic
+Tom: -1
+Vocal: 80%
+Guitarra: 100%
+
+Dakota
+Tom: +2
+Vocal: 70%
+Guitarra: 90%
+
+Isso é fundamental para o uso ao vivo.
+
+FASE 7 — Mixer
+
+Agora começa uma das partes principais do Korus.
+
+Supondo que já tenhamos:
+
+music/
+├── vocal
+├── guitar
+├── bass
+├── drums
+└── other
+
+Criamos:
+
+VOCAL       ████████
+GUITARRA    █████████
+BAIXO       ██████████
+BATERIA     ██████████
+OUTROS      ██████
+Funções
+
+Cada faixa:
+
+volume
+mute
+solo
+pan
+EQ
+
+E futuramente:
+
+efeitos
+Tecnologia
+
+Primeiro tentamos Web Audio API.
+
+Aqui vamos descobrir na prática até onde o navegador aguenta.
+
+FASE 8 — Reprodução multitrack
+
+Agora precisamos tocar várias faixas simultaneamente.
+
+Problema
+
+Não podemos simplesmente:
+
+audio1.play()
+audio2.play()
+audio3.play()
+
+e esperar que tudo permaneça perfeitamente sincronizado.
+
+Vamos construir um sistema de reprodução sincronizada.
+
+Funções
+iniciar todos os stems juntos
+pause sincronizado
+seek sincronizado
+stop sincronizado
+mudança de música
+carregamento
+sincronização de tempo
+Tecnologia
+
+Ainda:
+
+JavaScript/TypeScript + Web Audio API
+
+Se encontrarmos limitações, documentamos.
+
+Ainda não pulamos para C++.
+
+FASE 9 — Transição entre músicas
+
+Agora começamos a pensar como um músico realmente usaria isso.
+
+Funções
+próxima música automática
+crossfade
+pré-carregamento
+transição
+fila
+reprodução contínua
+
+Exemplo:
+
+Música A
+██████████████████
+             ╲
+              ╲
+               ██████████████████
+                         Música B
+FASE 10 — Key / Pitch
+
+Agora entra uma função central do Korus.
+
+Objetivo
+
+Alterar a tonalidade.
+
+-3
+-2
+-1
+ 0
++1
++2
++3
+
+Sem simplesmente mudar o BPM.
+
+Primeiro tentamos
+
+JavaScript / Web Audio / processamento disponível no navegador.
+
+Se necessário
+AudioWorklet
+WebAssembly
+E somente depois
+
+C++.
+
+Aqui teremos nossa primeira decisão técnica séria:
+
+O navegador consegue fazer isso com qualidade suficiente para o Korus?
+
+Se sim → continuamos.
+
+Se não → começamos a mover essa parte para o núcleo nativo.
+
+FASE 11 — BPM / Time Stretch
+
+Depois do pitch:
+
+aumentar BPM
+diminuir BPM
+manter pitch
+manter sincronização dos stems
+
+Exemplo:
+
+Original
+100 BPM
+
+Korus
+110 BPM
+
+Sem deixar a música simplesmente mais aguda.
+
+Novamente:
+
+JavaScript primeiro.
+
+Depois:
+
+WASM / C++ se necessário.
+
+FASE 12 — Sistema de processamento de áudio
+
+Agora, se chegamos nesse ponto, teremos uma noção muito melhor do que o navegador consegue e não consegue fazer.
+
+Aqui organizamos:
+
+Audio Engine
+├── Player
+├── Mixer
+├── EQ
+├── Pitch
+├── Tempo
+├── Effects
+└── Output
+
+Algumas partes continuarão em JS.
+
+Outras podem migrar para C++.
+
+Só agora começamos a criar o C++ de verdade.
+
+FASE 13 — Separação de músicas por IA
+
+Agora entra uma das maiores funções do Korus.
+
+Usuário:
+
+Adicionar música
+       ↓
+Separar com IA
+       ↓
+┌──────────────────┐
+│ Vocal            │
+│ Guitarra         │
+│ Baixo            │
+│ Bateria          │
+│ Outros            │
+└──────────────────┘
+Primeiro vamos definir o pipeline.
+Arquivo original
+       ↓
+Processamento
+       ↓
+Modelo de IA
+       ↓
+Stems
+       ↓
+Korus
+
+Aqui podemos utilizar tecnologias específicas de IA.
+
+A IA não precisa ficar dentro do React.
+
+O React apenas controla o processo.
+
+FASE 14 — Gerenciamento dos Stems
+
+Agora precisamos tratar os arquivos gerados pela IA como parte da música.
+
+Funções
+detectar stems
+importar stems manualmente
+substituir stem
+excluir stem
+renomear
+verificar compatibilidade
+armazenar
+carregar
+cache
+
+E teremos:
+
+Música
+│
+├── Original
+│
+└── Stems
+    ├── Vocal
+    ├── Guitar
+    ├── Bass
+    ├── Drums
+    └── Other
+FASE 15 — Configurações específicas por música
+
+Aqui o Korus começa a ficar realmente interessante para palco.
+
+Exemplo:
+
+Mr. Brightside
+
+Key: +2
+
+Vocal: 85%
+Guitar: 100%
+Bass: 100%
+Drums: 100%
+Other: 60%
+
+Reverb: 10%
+EQ: configuração X
+
+Quando você selecionar essa música:
+
+tudo volta automaticamente.
+
+FASE 16 — Modo palco
+
+Agora criamos uma interface completamente diferente.
+
+Poucos elementos.
+
+Botões grandes.
+
+Informações importantes.
+
+┌─────────────────────────────┐
+│        MR BRIGHTSIDE        │
+│                             │
+│          +2 KEY             │
+│                             │
+│       02:31 / 03:43         │
+│                             │
+│      próxima: DAKOTA        │
+│                             │
+│   ▶        ⏸        ⏭       │
+└─────────────────────────────┘
+
+E:
+
+letra grande
+próxima música
+tonalidade
+BPM
+mixer rápido
+emergência stop
+FASE 17 — Offline de verdade
+
+Agora começamos a tratar o Korus como aplicativo profissional.
+
+Objetivo
+
+Depois que a música foi baixada:
+
+Internet
+   ↓
+download
+   ↓
+Korus
+   ↓
+OFFLINE
+
+O usuário consegue:
+
+tocar
+acessar letras
+usar stems
+alterar volume
+usar playlists
+usar configurações
+
+sem internet.
+
+FASE 18 — Conta / Biblioteca online
+
+Agora entra backend.
+
+Korus
+   ↓
+API
+   ↓
+Conta
+   ↓
+Biblioteca
+Funções
+login
+cadastro
+músicas da conta
+playlists
+configurações
+sincronização
+downloads
+
+Aqui entram:
+
+Node.js + TypeScript + banco de dados.
+
+FASE 19 — Download e sincronização
+
+Agora:
+
+Conta
+ ↓
+Biblioteca online
+ ↓
+Download
+ ↓
+Armazenamento local
+
+E depois:
+
+alteração local
+ ↓
+sincronização
+ ↓
+servidor
+
+Precisamos resolver conflitos, versões e integridade dos arquivos.
+
+FASE 20 — C++ / Native Core
+
+Agora teremos experiência suficiente para saber o que realmente precisa sair do JavaScript.
+
+O C++ entra nos pontos comprovadamente necessários.
+
+Possivelmente:
+
+React / TS
+     ↓
+Korus Core
+     ↓
+C++
+     ├── Audio Engine
+     ├── DSP
+     ├── Pitch
+     ├── Time Stretch
+     ├── Low Latency
+     └── Hardware
+
+Não vamos migrar tudo.
+
+Só o que realmente precisar.
+
+FASE 21 — Desktop
+
+Agora transformamos em:
+
+Korus Studio.exe
+
+Com:
+
+arquivos locais
+áudio
+C++
+IA
+biblioteca
+offline
+atualização
+
+Aqui decidimos a tecnologia de empacotamento baseada no que construímos.
+
+FASE 22 — Android
+
+Depois:
+
+Korus Studio
+├── Windows
+├── Android
+├── Tablet
+└── TV Box
+
+E verificamos quais partes precisam de implementação específica para Android.
+
+FASE 23 — POLIMENTO
+
+Só depois de tudo funcionar:
+
+atalhos
+desempenho
+cache
+loading
+tratamento de erros
+logs
+recuperação de falhas
+UX
+animações
+acessibilidade
+instalação
+atualização
+backup
+A ORDEM TECNOLÓGICA FICA ASSIM
+
+Essa é a parte que você estava querendo:
+
+                 KORUS
+                   │
+                   ▼
+          JavaScript / TypeScript
+                   │
+                   ▼
+                 React
+                   │
+                   ▼
+             Browser APIs
+                   │
+                   ▼
+              Web Audio
+                   │
+                   ▼
+        AudioWorklet / WASM
+                   │
+                   ▼
+        ┌───────────────────┐
+        │       IA          │
+        │ Stem Separation   │
+        └───────────────────┘
+                   │
+                   ▼
+              Node.js
+                   │
+                   ▼
+             PostgreSQL
+                   │
+                   ▼
+                 C++
+                   │
+                   ▼
+          Native Audio Core
+                   │
+                   ▼
+              Desktop
+                   │
+                   ▼
+               Android
+
+Mas isso não significa que vamos estudar essas tecnologias nessa ordem.
+
+A ordem será determinada pela função que estamos construindo.
+
+Por exemplo:
+
+Precisamos tocar áudio.
+
+Então aprendemos o necessário de Web Audio.
+
+Precisamos salvar uma música.
+
+Então aprendemos IndexedDB.
+
+Precisamos separar stems.
+
+Então estudamos IA.
+
+O pitch não ficou bom no navegador.
+
+Então estudamos WASM/C++.
+
+Essa é a diferença.
+
+E nosso princípio para o projeto
+
+Eu deixaria escrito no README do Korus:
+
+"Use JavaScript/TypeScript e as APIs da plataforma ao máximo. Introduza tecnologias nativas somente quando existir uma necessidade concreta de produto, desempenho ou capacidade."
+
+Isso evita exatamente aquilo que aconteceu anteriormente: começar pensando em C++, Qt, Android, Windows, IA, etc., antes de termos o produto funcionando.
+
+E uma coisa que eu quero preservar
+
+Não vamos tentar construir o Korus inteiro de uma vez.
+
+Nossa próxima etapa seria simplesmente:
+
+FASE 1 — Fundação
+React
++
+TypeScript
++
+estrutura inicial
++
+layout básico

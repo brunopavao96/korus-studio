@@ -1,3 +1,5 @@
+import { generatePlaylistName } from "./playlist/generatePlaylistName.js";
+
 export const state = {
     libraryPath: `songs/library.json`,
     library: [],
@@ -16,4 +18,5 @@ export const state = {
     lyricsPreviewTime: 1.5,
 
     playlists: [],
+    currentPlaylist: null,
 };

@@ -11,11 +11,6 @@ export function controlsAction(){
     elements.tomAcima.addEventListener('click', acima);
     elements.tomAbaixo.addEventListener('click', abaixo);
     elements.backButton.addEventListener('click', backLibrary);
-    elements.backward.addEventListener(
-    "click",
-    backFiveSeconds);
-    elements.forward.addEventListener(
-    "click",
-    forwardFiveSeconds
-);
+    elements.backward.addEventListener("click", backFiveSeconds);
+    elements.forward.addEventListener("click", forwardFiveSeconds);
 }
