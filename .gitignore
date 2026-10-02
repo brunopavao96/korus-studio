@@ -2,5 +2,11 @@
 Thumbs.db
 .DS_Store
 
-#anotações pessoais
+# Anotações pessoais
 /anotacoes
+
+# Dependências do Node
+/server/node_modules/
+
+# Banco de dados local
+/server/korus.db

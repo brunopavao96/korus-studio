@@ -223,10 +223,6 @@ if (savedUser) {
         JSON.parse(savedUser);
 
 
-    console.log(
-        "Usuário já está logado:",
-        user
-    );
 
 
     authScreen.classList.add("hidden");

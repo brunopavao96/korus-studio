@@ -19,18 +19,19 @@ export async function prepareTracks(song, folder) {
             folder
         );
 
-    }
-    else {
+    } else {
 
         const user =
             JSON.parse(
-                sessionStorage.getItem("korusUser")
+                localStorage.getItem("korusUser")
             );
 
         if (!user) {
+
             throw new Error(
                 "Nenhum usuário está logado."
             );
+
         }
 
         const userTracks =
@@ -76,4 +77,5 @@ export async function prepareTracks(song, folder) {
     );
 
     saveTracks(tracks);
+
 }

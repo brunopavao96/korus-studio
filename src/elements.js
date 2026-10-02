@@ -21,6 +21,8 @@ export const elements = {
     stop: document.querySelector("#stop"),
     backward: document.querySelector("#backward"),
     forward: document.querySelector("#forward"),
+    previousSong: document.querySelector("#previous-song"),
+    nextSong: document.querySelector("#next-song"),
     createPlaylist: document.querySelector("#create-playlist"),
     playlistScreen: document.querySelector("#playlist-screen"),
     buttonPlaylists: document.querySelector("#playlists"),

@@ -1,5 +1,6 @@
 import { elements } from "../elements.js";
 import { renderLibrary } from "./renderLibrary.js";
+import { state } from "../state.js";
 
 export async function libraryLoad() {
 
@@ -20,9 +21,8 @@ export async function libraryLoad() {
         localStorage.getItem(storageKey)
     ) || [];
 
-    library.sort((a, b) =>
-        a.title.localeCompare(b.title)
-    );
+    state.library = library;
+    
 
     renderLibrary(library);
 }

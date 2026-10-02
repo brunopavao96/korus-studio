@@ -1,60 +1,58 @@
 import { elements } from "../elements.js";
 import { state } from "../state.js";
 import { renderSong } from "../player/renderSong.js";
+import { playTracks } from "../player/actions.js";
 
 export async function songLoad(songData) {
 
     elements.playerScreen.classList.remove("hidden");
-console.log(
-    "PLAYER INLINE:",
-    elements.playerScreen.getBoundingClientRect()
-);
-
-    console.log(
-        "PLAYER SCREEN:",
-        elements.playerScreen.classList.contains("hidden")
-    );
-
     elements.libraryScreen.classList.add("hidden");
 
-    const appRect =
-    document.querySelector("#app").getBoundingClientRect();
+    state.audioTracks.forEach(track => {
 
-    const playerRect =
-    elements.playerScreen.getBoundingClientRect();
+        if (track.audio) {
+            track.audio.pause();
+            track.audio.currentTime = 0;
+        }
 
-    console.log("APP:", appRect.width, appRect.height);
-    console.log("PLAYER:", playerRect.width, playerRect.height);
-    console.log(
-    "APP DISPLAY:",
-    getComputedStyle(document.querySelector("#app")).display
-    );
-    console.log(
-    "APP FLEX:",
-    getComputedStyle(document.querySelector("#app")).flex
-    );
+    });
 
-    console.log(
-    "PARENT:",
-    elements.playerScreen.parentElement
-);
+    function setupAutoNext() {
 
-console.log(
-    "PARENT RECT:",
-    elements.playerScreen.parentElement.getBoundingClientRect()
-);
+        if (state.audioTracks.length === 0) {
+            return;
+        }
 
-console.log(
-    "OFFSET PARENT:",
-    elements.playerScreen.offsetParent
-);
+        const audioPrincipal =
+            state.audioTracks[0].audio;
 
-console.log(
-    "OFFSET:",
-    elements.playerScreen.offsetWidth,
-    elements.playerScreen.offsetHeight
-);
+        audioPrincipal.onended = async () => {
 
+            const currentIndex =
+                state.library.findIndex(song => {
+
+                    if (songData.folder) {
+                        return song.folder === songData.folder;
+                    }
+
+                    return song.id === state.currentSong;
+                });
+
+            if (
+                currentIndex === -1 ||
+                currentIndex >= state.library.length - 1
+            ) {
+                return;
+            }
+
+            const nextSong =
+                state.library[currentIndex + 1];
+
+            await songLoad(nextSong);
+
+            playTracks();
+        };
+    }
 
     try {
 
@@ -85,13 +83,10 @@ console.log(
                 songData.folder
             );
 
+            setupAutoNext();
+
             return;
         }
-
-        console.log(
-            "Música do usuário:",
-            songData
-        );
 
         state.currentSong =
             songData.id;
@@ -100,6 +95,8 @@ console.log(
             songData,
             null
         );
+
+        setupAutoNext();
 
     } catch (error) {
 

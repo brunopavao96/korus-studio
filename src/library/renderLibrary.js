@@ -10,11 +10,119 @@ export function renderLibrary(library) {
 
     elements.libraryContainer.innerHTML = "";
 
+    let draggedCard = null;
 
     library.forEach(element => {
 
         const card =
             createLibrary(element);
+
+        card.draggable = true;
+
+        card.addEventListener("dragstart", event => {
+
+            draggedCard = card;
+
+            card.classList.add("dragging");
+
+            event.dataTransfer.effectAllowed = "move";
+
+        });
+
+
+        card.addEventListener("dragend", () => {
+
+            card.classList.remove("dragging");
+
+            draggedCard = null;
+
+        });
+
+
+        card.addEventListener("dragover", event => {
+
+            event.preventDefault();
+
+            if (!draggedCard || draggedCard === card) {
+                return;
+            }
+
+            const rect =
+                card.getBoundingClientRect();
+
+            const middle =
+                rect.top + rect.height / 2;
+
+            if (event.clientY < middle) {
+
+                elements.libraryContainer.insertBefore(
+                    draggedCard,
+                    card
+                );
+
+            } else {
+
+                elements.libraryContainer.insertBefore(
+                    draggedCard,
+                    card.nextSibling
+                );
+
+            }
+
+        });
+
+
+        card.addEventListener("drop", event => {
+
+            event.preventDefault();
+
+            if (!draggedCard) {
+                return;
+            }
+
+            const cards =
+                [...elements.libraryContainer.children];
+
+            const newLibrary =
+                cards.map(cardElement => {
+
+                    return library.find(
+                        music =>
+                            music.id == cardElement.dataset.musicId
+                    );
+
+                }).filter(Boolean);
+
+
+            const user =
+                JSON.parse(
+                    localStorage.getItem("korusUser")
+                );
+
+
+            if (!user) {
+
+                console.error(
+                    "Nenhum usuário está logado."
+                );
+
+                return;
+            }
+
+
+            const storageKey =
+                `korus_songs_${user.id}`;
+
+
+            localStorage.setItem(
+                storageKey,
+                JSON.stringify(newLibrary)
+            );
+
+
+            library = newLibrary;
+
+        });
 
 
         card.addEventListener("click", () => {
@@ -51,21 +159,23 @@ export function renderLibrary(library) {
                     event.stopPropagation();
 
 
-                    // Elementos do modal
                     const deleteModal =
                         document.querySelector(
                             "#delete-modal"
                         );
+
 
                     const deleteModalMessage =
                         document.querySelector(
                             "#delete-modal-message"
                         );
 
+
                     const cancelDelete =
                         document.querySelector(
                             "#cancel-delete"
                         );
+
 
                     const confirmDelete =
                         document.querySelector(
@@ -73,18 +183,15 @@ export function renderLibrary(library) {
                         );
 
 
-                    // Mostra o nome da música
                     deleteModalMessage.textContent =
                         `Deseja realmente excluir "${element.title}"?`;
 
 
-                    // Abre o modal
                     deleteModal.classList.remove(
                         "hidden"
                     );
 
 
-                    // Cancelar
                     cancelDelete.onclick = () => {
 
                         deleteModal.classList.add(
@@ -94,7 +201,6 @@ export function renderLibrary(library) {
                     };
 
 
-                    // Confirmar exclusão
                     confirmDelete.onclick = async () => {
 
                         deleteModal.classList.add(
@@ -180,6 +286,10 @@ export function renderLibrary(library) {
             );
 
         }
+
+
+        card.dataset.musicId =
+            element.id;
 
 
         elements.libraryContainer.appendChild(

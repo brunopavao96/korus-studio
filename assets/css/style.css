@@ -1453,3 +1453,16 @@ text-decoration: underline;
     background: #2d2d35;
     border-color: #9871f5;
 }
+
+.music {
+    cursor: grab;
+}
+
+.music:active {
+    cursor: grabbing;
+}
+
+.music.dragging {
+    opacity: 0.45;
+    transform: scale(0.98);
+}

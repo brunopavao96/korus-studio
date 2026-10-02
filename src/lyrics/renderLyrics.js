@@ -26,8 +26,6 @@ export async function renderLyrics(song) {
     let lyricsFileName;
 
 
-    // Música original
-
     if (
         state.currentSong &&
         typeof state.currentSong === "string"
@@ -62,12 +60,11 @@ export async function renderLyrics(song) {
     }
 
 
-    // Música criada pelo usuário
 
     else {
 
         const user = JSON.parse(
-            sessionStorage.getItem("korusUser")
+           localStorage.getItem("korusUser")
         );
 
         if (!user) {
@@ -93,35 +90,14 @@ export async function renderLyrics(song) {
             return;
         }
 
-        console.log(
-            "LYRICS RESULT:",
-            result
-        );
-
-        console.log(
-            "LYRICS FILE:",
-            result.file
-        );
-
-        console.log(
-            "LYRICS NAME:",
-            result.name
-        );
-
         content =
             await result.file.text();
 
         lyricsFileName =
             result.name;
 
-        console.log(
-            "LYRICS CONTENT:",
-            content
-        );
+ 
     }
-
-
-    // Interpretar letra
 
     if (
         lyricsFileName
@@ -132,10 +108,6 @@ export async function renderLyrics(song) {
         state.lyrics =
             parseLrc(content);
 
-        console.log(
-            "LYRICS PARSED:",
-            state.lyrics
-        );
 
     } else if (
         lyricsFileName
@@ -155,8 +127,6 @@ export async function renderLyrics(song) {
         return;
     }
 
-
-    // Criar elementos da letra
 
     state.lyrics.forEach(
         (line, index) => {
